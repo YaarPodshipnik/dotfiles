@@ -1,6 +1,10 @@
 # Options described at 
 # http://clang.llvm.org/docs/ClangFormatStyleOptions.html
 
+# TODO const on the right of type
+# TODO {} mandatory for every block
+# TODO initializer list always on new line
+
 Language: Cpp
 
 # do not indent public/protected/private
