@@ -1,0 +1,181 @@
+# Options described at 
+# http://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+Language: Cpp
+
+# do not indent public/protected/private
+AccessModifierOffset: 0
+
+# TODO: provide rationale
+AlignAfterOpenBracket: false
+
+# aligning things introduces too much whitespace
+AlignConsecutiveAssignments: false
+#AlignConsecutiveDeclarations: false # need clang-3.9
+AlignEscapedNewlinesLeft: false
+AlignOperands: false
+AlignTrailingComments: false
+
+# reduced size of declarations is not worth messsing with consistency
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# blocks are meant to stand out, consistency helps understanding
+AllowShortBlocksOnASingleLine: false
+
+# TODO: verify this actually does what I want
+# TODO: provide rationale
+AllowShortCaseLabelsOnASingleLine: false
+
+# Functions are meant to stand out. Functions that exist, but are empty, should have a comment in their body
+AllowShortFunctionsOnASingleLine: None
+
+# Trying to compact if statements is a source of some errors
+AllowShortIfStatementsOnASingleLine: false
+
+# loops should stand out
+AllowShortLoopsOnASingleLine: false
+
+# return type is important, and can be quite long when using templates
+AlwaysBreakAfterDefinitionReturnType: All
+# AlwaysBreakAfterReturnType: All # need clang-3.9
+
+# TODO: see how it works, decide on format
+#AlwaysBreakBeforeMultilineStrings: ???
+
+# template declarations can be quite long, maintain formatting consistency
+AlwaysBreakTemplateDeclarations: true
+
+# parameters should be either on a single line with function declaration : especially with return type on new line or each on separate line
+BinPackArguments: false
+BinPackParameters: false
+
+#BraceWrapping: # need clang-3.9
+#  AfterClass: true
+#  AfterControlStatement: false
+#  AfterEnum: true
+#  AfterFunction: true
+#  AfterNamespace: false
+#  AfterObjCDeclaration: false # no idea about ObjC
+#  AfterStruct: true
+#  AfterUnion: true
+#  BeforeCatch: false
+#  BeforeElse: false
+#  IndentBraces: false
+
+
+# BreakAfterJavaFieldAnnotations: false # Java
+
+BreakBeforeBinaryOperators: None
+
+# TODO provide description : related to BraceWrapping
+# BreakBeforeBraces: Custom # Need at least clang-3.9 for this
+BreakBeforeBraces: Stroustrup
+
+# ternary is not that special
+BreakBeforeTernaryOperators: false
+
+# TODO see how this looks like
+BreakConstructorInitializersBeforeComma: true
+
+# breaking string literals is allowed, some human effort is necessary to make it sensible
+#BreakStringLiterals: true # need clang-3.9
+
+# the below column limit allows me to fit two files side by side on my monitor at home. if something is up for discussion, this is.
+ColumnLimit: 90
+
+# TODO find out if I need it
+#CommentPragmas: ???
+
+# same as with functions - either everything on one line or one per line
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+
+# TODO find if it really intendts the way I like it. maybe needs to be 0
+ConstructorInitializerIndentWidth: 2
+
+# broken lines should be indented, but just a bit
+ContinuationIndentWidth: 2
+
+# per guides, braced list initializer should be formatted like function calls
+Cpp11BracedListStyle: true
+
+# I don't want the existing file to tell formatter what to use - I want the formatter to dictate how the file should look like
+DerivePointerAlignment: false
+
+# of course I don't want to disable the format
+DisableFormat: false
+
+# it's the formater that decides how the code should be formatted
+ExperimentalAutoDetectBinPacking: false
+
+# I haven't used a foreach macro in a long time, so I don't think I need this
+#ForEachMacros
+
+# I do want the headers to be ordered in a specific way - high level (project) at top, low-level (std) at bottom. That way
+# the risk of headers relaying on transitive includes diminishes
+# TODO set this up correctly
+# IncludeCategories:
+#   - Regex: ""
+#     Priority: 2
+
+# TODO: check if this is what I really want
+IndentCaseLabels: false
+
+# I don't want too much indentation
+IndentWidth: 2
+IndentWrappedFunctionNames: false
+
+# Blocks shouldn't really start with whitespace
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+# I really try not to use any macros, so empty for now. This might need expansion
+# MacroBlockBegin
+# MacroBlockEnd
+
+# If additional separation into blocks is required one line suffices. TODO see if 2 are needed between functions/classes etc
+MaxEmptyLinesToKeep: 1
+
+# Indenting namespaces adds nothing to readability and wastes space
+NamespaceIndentation: None
+
+# I have no use for ObjC stuff
+# ObjCBlockIndentWidth
+# ObjCSpaceAfterProperty
+# ObjCSpaceBeforeProtocolList
+
+# This will need to be fine-tuned to produce the desired output
+PenaltyBreakBeforeFirstCallParameter: 10
+PenaltyBreakComment: 20
+PenaltyBreakFirstLessLess: 20
+PenaltyBreakString: 30
+PenaltyExcessCharacter: 100
+PenaltyReturnTypeOnItsOwnLine: 0 # we actually want that 
+
+# I don't want pointer or ref to be glued to anything
+PointerAlignment: Middle
+
+# Not sure how good it is, but let's give clang-format a chance
+#ReflowComments: true # need clang-3.9
+
+# We definitely want includes to be sorted into blocks and alphabetically
+#SortIncludes: true # need clang-3.9
+
+# Need to find a way to disallow c-style casts altogether, but for now, just format them
+SpaceAfterCStyleCast: true
+
+# Assignment should be like every other operator, with spaces around it
+SpaceBeforeAssignmentOperators: true
+
+# I don't like spurious whitespace, but some stuff needs to be separated
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: false # we live in a modern world and should compile at least c++11 
+SpacesInCStyleCastParentheses: false
+SpacesInContainerLiterals: false # that's probably more for ObjC and JS
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+Standard: Cpp11
+
+# No tabs. Tabs are bad.
+TabWidth: 2
+UseTab: Never
