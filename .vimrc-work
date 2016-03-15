@@ -1,0 +1,21 @@
+# I think that a lot of this stuff is not working or crap. I'm still learning VIM so it will improve in time
+
+syntax on
+set term=xterm
+set expandtab
+set autoindent
+set cindent
+"set ru
+set backspace=indent,eol,start
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set smarttab
+set number
+
+" Move around in INSERT mode with ALT+hjkl
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <A-l> <C-o>l
