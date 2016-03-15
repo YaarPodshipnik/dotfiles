@@ -1,0 +1,94 @@
+# Solaris DBX config
+
+#remove annoying stuff
+dbxenv suppress_startup_message 7.9
+
+set -o emacs
+
+dbxenv macro_source compiler
+dbxenv follow_fork_mode child
+dbxenv trace_speed 0.01
+
+# make it a sliver like gdb
+alias b='stop in'   
+alias c='cont'    
+alias d='delete'    
+alias dis='handler -disable'   
+alias ena='handler -enable'   
+alias f='frame -h'   
+alias l='list'    
+alias lw='list -w'   
+alias n='next'    
+alias ni='nexti'    
+alias p='print'    
+alias ph='print #NAME? llx ' 
+alias q='exit'    
+alias s='step'    
+alias si='stepi'    
+alias st='step to'   
+alias start='stop in main -temp; run'
+alias su='step up'   
+alias t='threads'  
+alias bt='where 10'
+
+# collector (profiler) stuff
+alias ce='collector enable'
+alias cec='collector enable; cont'
+alias cd='collector disable'
+alias cdc='collector disable; cont'
+alias cht='collector profile timer hi'
+
+#stuff from the web
+##### functions
+# Useful shortcut for saving your session to a file; acts like a trigger:
+# log logfile - start logging everything (both your input and dbx output,
+#               but not debuggee output)
+# log         - stop logging
+log()
+{
+  dbxenv session_log_file_name $1
+  if [ "$1" != "" ]; then
+   echo "Logging to: $1"
+  else
+   echo "Logging off"
+  fi
+}
+
+# Somewhat useful undo function for "why did I just hit step again?"
+# situations. It removes topmost stack frame and re-enters the function
+# once again. Needless to say that global state remains the same; there's
+# no undo for global state in dbx.
+undo()
+{
+  pop
+  step
+}
+
+#fancy format command prompt
+getps()
+{
+  echo -n '['
+  tput setaf 4
+  echo -n '$(basename $vfile 2>/dev/null)'
+  tput sgr0
+  echo -n ':'
+  tput setaf 3  
+  echo -n '$vlineno'
+  tput sgr0
+  echo -n ']> '
+                      
+  #echo '[$vfunc@$(basename $vfile 2>/dev/null):$vlineno]> '
+}
+
+PS1="$(getps)"
+
+bind ^?=delete-char-backward
+bind ^[[3=prefix-1
+bind ^[[3~=delete-char-forward
+bind ^[[7=prefix-2
+bind ^[[7~=beginning-of-line
+bind ^[[8~=end-of-line
+bind ^[[A=up-history
+bind ^[[B=down-history
+bind ^[[D=backward-char
+bind ^[[C=forward-char
