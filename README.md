@@ -8,4 +8,5 @@ Various dotfiles I use to configure my env. A lot of them are heavily based (or 
  * zsh config
  * qt creator config
  * custom fun/useful scripts I have laying around
+ * gitconfig
 * make a small script that will symlink all of this stuff back to my home
