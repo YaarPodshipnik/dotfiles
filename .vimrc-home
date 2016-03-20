@@ -1,0 +1,32 @@
+"" simpler adding of vim addons http://www.vim.org/scripts/script.php?script_id=2332
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect() 
+
+" enable the nice thing in bottom right corner that shows column and row
+set ruler
+set laststatus=2
+
+" I like zenburn, and it needs some setup
+set t_Co=256 " set terminal colors to 256
+colors zenburn " this needs ~/.vim/colors/zenburn.vim 
+
+set expandtab " don't use tabs, use spaces
+set tabstop=2 " I like short tabs and I cannot lie
+set shiftwidth=2
+
+set number " show line numbers
+
+set colorcolumn=91 " 90 chars is quite comfortable for a single line for me
+
+" make indenting work nicely
+filetype indent plugin on
+syntax on
+set backspace=indent,eol,start
+set autoindent
+
+" indent lines config
+let g:indentLine_color_term = 235
+
+
+
+
