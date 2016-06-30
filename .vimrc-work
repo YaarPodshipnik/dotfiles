@@ -1,18 +1,42 @@
-# I think that a lot of this stuff is not working or crap. I'm still learning VIM so it will improve in time
+" This configuration file was tested with
+"       /usr/local/bin/vim (7.0) and
+"       /usr/local/bin/gvim (7.0)
+"this line prevents copydotfiles from recopying: dot-vimrc_included
 
-syntax on
-set term=xterm
-set expandtab
-set autoindent
-set cindent
-"set ru
-set backspace=indent,eol,start
+"" simpler adding of vim addons http://www.vim.org/scripts/script.php?script_id=2332
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
 
-set tabstop=2
+" configure the way vim window looks like
+set ruler
+set laststatus=2
+set number
+set colorcolumn=91 " 90 chars is quite comfortable for a single line for me
+
+" I like zenburn, and it needs some setup
+set t_Co=256 " set terminal colors to 256
+set background=dark
+"colors zenburn " this needs ~/.vim/colors/zenburn.vim
+
+set expandtab " don't use tabs, use spaces
+set tabstop=2 " I like short tabs and I cannot lie
 set shiftwidth=2
 set softtabstop=2
 set smarttab
-set number
+
+" make indenting work nicely
+filetype indent plugin on
+syntax on
+set backspace=indent,eol,start
+set autoindent
+
+" indent lines config
+let g:indentLine_char = '┆'
+
+" work in UTF-8
+set encoding=utf-8  " The encoding displayed.
+set fileencoding=utf-8  " The encoding written to file.
+
 
 " Move around in INSERT mode with ALT+hjkl
 inoremap <A-h> <C-o>h
