@@ -3,17 +3,10 @@
   ci = commit
   br = branch
   co = checkout
-  df = diff
   dc = diff --cached
   lg = log -p
   who = shortlog -s --
-  dt = difftool
   desc = branch --edit-description
-  graph = log --graph --pretty=oneline --abbrev-commit
-  gv = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
-        lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-  lg = !"git lg1"
   sl = log --pretty=format:'%C(bold blue)%h%Creset - %s %C(bold red)<%an>%Creset'
 
 [color]
@@ -29,3 +22,9 @@
   
 [rerere]
   enabled = true
+  
+[submodule]
+  fetchJobs = 4
+  
+[diff]
+  compactionHeuristic = true
