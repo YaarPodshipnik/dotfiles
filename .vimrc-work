@@ -15,6 +15,7 @@ set colorcolumn=91 " 90 chars is quite comfortable for a single line for me
 
 " I like zenburn, and it needs some setup
 set t_Co=256 " set terminal colors to 256
+set t_ut=
 set background=dark
 "colors zenburn " this needs ~/.vim/colors/zenburn.vim
 
