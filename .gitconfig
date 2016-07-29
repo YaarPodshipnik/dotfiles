@@ -8,6 +8,7 @@
   who = shortlog -s --
   desc = branch --edit-description
   sl = log --pretty=format:'%C(bold blue)%h%Creset - %s %C(bold red)<%an>%Creset'
+  find = ! sh -c 'git ls-files $2 | grep $1' -
 
 [color]
   diff = auto
