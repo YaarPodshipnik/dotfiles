@@ -38,6 +38,9 @@ let g:indentLine_char = '┆'
 set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 
+" highlight trailing white space                                                              
+highlight ExtraWhitespace ctermbg=darkyellow guibg=darkyellow                                 
+match ExtraWhitespace /\s\+$/
 
 " Move around in INSERT mode with ALT+hjkl
 inoremap <A-h> <C-o>h
